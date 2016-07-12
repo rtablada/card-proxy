@@ -35,3 +35,11 @@ Route.get('/decks/:id/draw', function * (req, res) {
 
   res.send(back);
 });
+
+Route.get('/decks/:id/shuffle', function * (req, res) {
+  const id = req.param('id');
+  const x = yield fetch(`http://deckofcardsapi.com/api/deck/${id}/shuffle`);
+  const back = yield x.json();
+
+  res.send(back);
+});
